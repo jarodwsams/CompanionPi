@@ -1,1 +1,1 @@
-# companionpi
+# CompanionPi

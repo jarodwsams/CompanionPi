@@ -19,7 +19,10 @@ ECHO "Pulling updated supplemental CompanionPi repository"
 cd /usr/local/bin/companionpi
 git remote update origin --prune
 git pull
-ECHO "CompanionPi repository pulled"
+if [[ ! -f "companionpi-install.sh"]]
+then
+    rm companionpi-install.sh
+fiECHO "CompanionPi repository pulled"
 
 
 read -p "Rebooting in 5 seconds..." -t 5

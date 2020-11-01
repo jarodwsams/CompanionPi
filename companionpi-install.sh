@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Installing dependencies"
 apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt autoremove

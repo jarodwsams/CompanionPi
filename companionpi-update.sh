@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Stopping Companion"
 systemctl stop companion

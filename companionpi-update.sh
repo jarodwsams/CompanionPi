@@ -2,7 +2,8 @@
 
 echo "Stopping Companion"
 systemctl stop companion
-read -p "Companion Stopped" -t 3
+echo "Companion Stopped"
+sleep 3
 
 clear
 echo "Pulling updated Companion codebase for v2.1.0"
@@ -10,12 +11,14 @@ cd /usr/local/src/companion
 git remote update origin --prune
 git fetch
 git checkout v2.1.0
-read -p "Companion v2.1.0 codebase pulled" -t 3
+echo "Companion v2.1.0 codebase pulled"
+sleep 3
 
 clear
 echo "Updating Companion Core"
 yarn update
-read -p "Companion Core Update complete" -t 3
+echo "Companion Core Update complete"
+sleep 3
 
 clear
 echo "Pulling updated supplemental CompanionPi repository"
@@ -33,7 +36,8 @@ fi
 if [[ -f "companionpi-install.sh"]]; then
     rm companionpi-install.sh
 fi
-read -p "CompanionPi repository pulled" -t 3
+echo "CompanionPi repository pulled"
+sleep 3
 
 
 clear
@@ -67,8 +71,10 @@ else
     ln -s /usr/local/src/CompanionPi/companionpi-update.sh /usr/local/bin/companion-update
     chmod +x /usr/local/bin/companion-update
 fi
-read -p "Finishing up..." -t 3
+echo "Finishing up..."
+sleep 3
 
 clear
-read -p "Rebooting in 5 seconds..." -t 5
+echo "Rebooting in 5 seconds..."
+sleep 5
 reboot

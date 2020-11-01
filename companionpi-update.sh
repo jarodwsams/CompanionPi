@@ -4,6 +4,7 @@ echo "Stopping Companion"
 systemctl stop companion
 read -p "Companion Stopped" -t 3
 
+clear
 echo "Pulling updated Companion codebase for v2.1.0"
 cd /usr/local/src/companion
 git remote update origin --prune
@@ -11,10 +12,12 @@ git fetch
 git checkout v2.1.0
 read -p "Companion v2.1.0 codebase pulled" -t 3
 
+clear
 echo "Updating Companion Core"
 yarn update
 read -p "Companion Core Update complete" -t 3
 
+clear
 echo "Pulling updated supplemental CompanionPi repository"
 # If CompanionPi isn't already cloned, clone it
 # If not, navigate to the directory and pull latest
@@ -33,6 +36,7 @@ fi
 read -p "CompanionPi repository pulled" -t 3
 
 
+clear
 echo "Checking udev rules and systemd unit file"
 # Check for udev rules file
 if [[ -f "/etc/systemd/system/companion.service"]]; then
@@ -56,7 +60,6 @@ else
     echo "Systemd unit file missing or incorrect. Copying latest from repo."
     cp systemd-service/companion.service /etc/systemd/system/companion.service
 fi
-
 # Check for companion-update symlink
 if [[ -f "/usr/local/bin/companion-update"]]; then
     # symlink for companion-update already exists
@@ -64,8 +67,8 @@ else
     ln -s /usr/local/src/CompanionPi/companionpi-update.sh /usr/local/bin/companion-update
     chmod +x /usr/local/bin/companion-update
 fi
-
 read -p "Finishing up..." -t 3
 
+clear
 read -p "Rebooting in 5 seconds..." -t 5
 reboot

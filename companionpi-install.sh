@@ -5,12 +5,14 @@ apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt autoremov
 apt install libgusb-dev npm nodejs git build-essential cmake libudev-dev libusb-1.0-0-dev -y
 read -p "Dependencies installed" -t 5
 
+clear
 echo "Installing Node.js and Yarn"
 npm install n yarn -g
 n 8.12.0
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 read -p "Node.js and Yarn installation complete" -t 5
 
+clear
 echo "Installing Companion"
 cd /usr/local/src
 git clone https://github.com/bitfocus/companion.git
@@ -20,11 +22,13 @@ yarn update
 ./tools/build_writefile.sh
 read -p "Companion installation complete" -t 5
 
-echo "Pulling updated supplemental CompanionPi repository"
+clear
+echo "Pulling supplemental CompanionPi repository"
 cd /usr/local/src
 git clone https://github.com/jarodwsams/CompanionPi.git
 read -p "CompanionPi repository pulled" -t 5
 
+clear
 echo "Checking udev rules and systemd unit file"
 if [[ -f "/etc/systemd/system/companion.service"]]; then
     if cmp -s "udev-rules/50-companion.rules" "/etc/udev/rules.d/50-companion.rules"; then
@@ -47,5 +51,6 @@ read -p "Finishing up..." -t 5
 ln -s /usr/local/src/CompanionPi/companionpi-update.sh /usr/local/bin/companion-update
 chmod +x /usr/local/bin/companion-update
 
+clear
 read -p "Rebooting in 5 seconds..." -t 5
 reboot

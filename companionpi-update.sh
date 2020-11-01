@@ -5,7 +5,7 @@ systemctl stop companion
 read -p "Companion Stopped" -t 2
 
 ECHO "Pulling updated Companion codebase for v2.1.0"
-cd /usr/local/bin/companion
+cd /usr/local/src/companion
 git remote update origin --prune
 git fetch
 git checkout v2.1.0
@@ -18,11 +18,11 @@ read -p "Companion Core Update complete" -t 2
 ECHO "Pulling updated supplemental CompanionPi repository"
 # If CompanionPi isn't already cloned, clone it
 # If not, navigate to the directory and pull latest
-if [[ ! -f "/usr/local/bin/CompanionPi"]]; then
-    cd /usr/local/bin
+if [[ ! -f "/usr/local/src/CompanionPi"]]; then
+    cd /usr/local/src
     git clone https://github.com/jarodwsams/CompanionPi.git
 else
-    cd /usr/local/bin/CompanionPi
+    cd /usr/local/src/CompanionPi
     git remote update origin --prune
     git pull
 fi

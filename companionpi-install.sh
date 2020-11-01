@@ -12,7 +12,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 ECHO "Node.js and Yarn installation complete"
 
 ECHO "Installing Companion"
-cd /usr/local/bin
+cd /usr/local/src
 git clone https://github.com/bitfocus/companion.git
 cd companion
 git checkout v2.1.0
@@ -21,7 +21,7 @@ yarn update
 ECHO "Companion installation complete"
 
 ECHO "Pulling updated supplemental CompanionPi repository"
-cd /usr/local/bin
+cd /usr/local/src
 git clone https://github.com/jarodwsams/CompanionPi.git
 read -p "CompanionPi repository pulled" -t 5
 

@@ -34,8 +34,8 @@ sleep 3
 
 clear
 echo "Installing udev rules and systemd unit file"
-sudo cp udev-rules/50-companion.rules /etc/udev/rules.d/50-companion.rules
-sudo cp systemd-service/companion.service /etc/systemd/system/companion.service
+sudo cp /usr/local/src/CompanionPi/udev-rules/50-companion.rules /etc/udev/rules.d/50-companion.rules
+sudo cp /usr/local/src/CompanionPi/systemd-service/companion.service /etc/systemd/system/companion.service
 sudo systemctl enable companion.service
 sudo systemctl enable systemd-networkd-wait-online.service
 
@@ -43,7 +43,7 @@ echo "Finishing up..."
 sleep 3
 
 sudo ln -s /usr/local/src/CompanionPi/companionpi-update.sh /usr/local/bin/companion-update
-chmod +x /usr/local/bin/companion-update
+sudo chmod +x /usr/local/bin/companion-update
 
 clear
 echo "Rebooting in 5 seconds..."

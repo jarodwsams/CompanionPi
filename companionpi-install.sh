@@ -33,24 +33,12 @@ echo "CompanionPi repository pulled"
 sleep 3
 
 clear
-echo "Checking udev rules and systemd unit file"
-if [[ -f "/etc/systemd/system/companion.service"]]; then
-    if cmp -s "udev-rules/50-companion.rules" "/etc/udev/rules.d/50-companion.rules"; then
-        echo "udev rules are up-to-date"
-    fi
-else
-    echo "udev rules file is up-to-date"
-    cp udev-rules/50-companion.rules /etc/udev/rules.d/50-companion.rules
-fi
-if [[ -f "/etc/systemd/system/companion.service"]]; then
-    if cmp -s "systemd-service/companion.service" "/etc/systemd/system/companion.service"; then
-        echo "systemd unit file is up-to-date"
-    fi
-else
-    echo "Systemd unit file missing or incorrect. Copying latest from repo."
-    cp systemd-service/companion.service /etc/systemd/system/companion.service
-    sudo systemctl enable systemd-networkd-wait-online.service
-fi
+echo "Installing udev rules and systemd unit file"
+cp udev-rules/50-companion.rules /etc/udev/rules.d/50-companion.rules
+cp systemd-service/companion.service /etc/systemd/system/companion.service
+sudo systemctl enable companion.service
+sudo systemctl enable systemd-networkd-wait-online.service
+
 echo "Finishing up..."
 sleep 3
 

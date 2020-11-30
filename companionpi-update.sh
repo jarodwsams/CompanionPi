@@ -10,8 +10,8 @@ echo "Pulling updated Companion codebase for v2.1.0"
 cd /usr/local/src/companion
 git remote update origin --prune
 git fetch
-git checkout v2.1.0
-echo "Companion v2.1.0 codebase pulled"
+git checkout v2.1.1
+echo "Companion v2.1.1 codebase pulled"
 sleep 3
 
 clear

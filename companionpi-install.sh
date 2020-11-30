@@ -15,11 +15,11 @@ echo "Node.js and Yarn installation complete"
 sleep 3
 
 clear
-echo "Installing Companion"
+echo "Installing Companion v2.1.1"
 cd /usr/local/src
 git clone https://github.com/bitfocus/companion.git
 cd companion
-git checkout v2.1.0
+git checkout v2.1.1
 yarn update
 ./tools/build_writefile.sh
 echo "Companion installation complete"
